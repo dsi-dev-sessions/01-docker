@@ -1,0 +1,28 @@
+version: '2'
+services:
+  load-balancer:
+    image: nginx
+    volumes:
+      - ./load-balancer/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 9000:80
+    links:
+      - site1
+      - site2
+      - site3
+  site1:
+    build: ./site
+    environment:
+      - BACKGROUND_COLOR=orange
+      - MESSAGE=Orgrimmar
+  site2:
+    build: ./site
+    environment:
+      - BACKGROUND_COLOR=blue
+      - MESSAGE=Undercity
+  site3:
+    build: ./site
+    environment:
+      - BACKGROUND_COLOR=green
+      - MESSAGE=Thunderbluff
+    
