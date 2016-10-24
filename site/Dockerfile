@@ -7,8 +7,9 @@ RUN apt-get update && \
 EXPOSE 8000
 
 RUN mkdir -p /site
-COPY index.html /site
+COPY index.template entrypoint.bash /
+RUN chmod +x /entrypoint.bash
 
 WORKDIR /site
 
-ENTRYPOINT ["python", "-m", "SimpleHTTPServer"]
+ENTRYPOINT ["/entrypoint.bash"]

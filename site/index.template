@@ -1,0 +1,8 @@
+<html>
+<head>
+	<title>My Site</title>
+</head>
+<body style="background-color: {{BACKGROUND_COLOR}}">
+	<h1>{{MESSAGE}}</h1>
+</body>
+</html>
