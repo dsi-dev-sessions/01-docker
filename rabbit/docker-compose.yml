@@ -1,0 +1,28 @@
+version: '2'
+services:
+  as1:
+    build: .
+    links:
+    - rabbit
+    environment:
+    - FIRESTARTER=true
+    - MY_QUEUE=queue1
+    - NEXT_QUEUE=queue2
+    - RABBITMQ_USER=user
+    - RABBITMQ_PASS=pass
+    - RABBITMQ_HOSTNAME=rabbit
+  as2:
+    build: .
+    links:
+    - rabbit
+    environment:
+    - MY_QUEUE=queue2
+    - NEXT_QUEUE=queue1
+    - RABBITMQ_USER=user
+    - RABBITMQ_PASS=pass
+    - RABBITMQ_HOSTNAME=rabbit
+  rabbit:
+    image: rabbitmq
+    environment:
+    - RABBITMQ_DEFAULT_USER=user
+    - RABBITMQ_DEFAULT_PASS=pass
