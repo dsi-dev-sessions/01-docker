@@ -1,2 +1,2 @@
-# dev-sessions
-Code and presentations of DSI development sessions
+# Docker Workshop
+Code and slides
